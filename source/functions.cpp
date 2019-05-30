@@ -2,44 +2,45 @@
 #include "functions.hpp"
 
 int abs_val(int x) {
-  return (x > 0) ? x : x * -1;
+  if (x >= 0) return x;
+  else return abs_val(x * -1);
 }
 
 int pow(int base, int num) {
-  int ret = 1;
-  for (int i = 0; i < num; ++i) {
-    ret *= base;
-  }
-  return ret;
+  if (num == 0) return 1;
+  else return base * pow(base, num - 1);
 }
 
 int log(int base, int num) {
-  int count = 0;
-  for (num; num > 1; num /= base)
-    ++count;
-  return count;
+  if (num == 1) return 0;
+  else return log(base, num / base) + 1;
 }
 
+//SKIP
 int chartoint(char c) {
   int result = (int)c;
   result -= '0';
   return result;
 }
 
+//SKIP
 char inttochar(int x) {
   return (char)(x + '0');
 }
 
+//SKIP
 char chr(int x) {
   return (char)x;
 }
 
+//SKIP
 int ord(char c) {
   return (int)c;
 }
 
 int max(int x, int y) {
-  return (x > y) ? x : y;
+  // return (x > y) ? x : y;
+  return (x >= y) ? x : max(y, x);
 }
 
 int max(int x, int y, int z) {
@@ -47,7 +48,7 @@ int max(int x, int y, int z) {
 }
 
 int min(int x, int y) {
-  return (x < y) ? x : y;
+  return (x <= y) ? x : min(y, x);
 }
 
 int min(int x, int y, int z) {
@@ -55,92 +56,87 @@ int min(int x, int y, int z) {
 }
 
 int round(double x, char c) {
+  if (x == (int)x) return (int)x;
   if (x > 0) {
-    return (c == 'd') ? (int)x : (int)x + 1;
+    return (c == 'd') ? round((int)x, c) : round((int)x + 1, c);
   } else {
-    return (c == 'd') ? (int)x - 1 : (int)x;
+    return (c == 'd') ? round((int)x - 1, c) : round((int)x, c);
   }
 }
 
 int max(int arr[], int n) {
-  int max = arr[0];
-  for (int i = 1; i < n; ++i) {
-    if (arr[i] > max)
-      max = arr[i];
+  if (n == 1) return arr[0];
+  else {
+    return max(arr[0], max(arr + 1, n - 1));
   }
-  return max;
 }
 
 int min(int arr[], int n) {
-  int min = arr[0];
-  for (int i = 1; i < n; ++i) {
-    if (arr[i] < min)
-      min = arr[i];
+  if (n == 1) return arr[0];
+  else {
+    return min(arr[0], min(arr + 1, n - 1));
   }
-  return min;
 }
 
-bool all(bool arr[], int n) {
-  for (int i = 0; i < n; ++i) {
-    if (!arr[i])
-      return false;
-  }
-  return true;
-}
+// bool all(bool arr[], int n) {
+//   for (int i = 0; i < n; ++i) {
+//     if (!arr[i])
+//       return false;
+//   }
+//   return true;
+// }
 
-bool any(bool arr[], int n) {
-  for (int i = 0; i < n; ++i) {
-    if (arr[i])
-      return true;
-  }
-  return false;
-}
+// bool any(bool arr[], int n) {
+//   for (int i = 0; i < n; ++i) {
+//     if (arr[i])
+//       return true;
+//   }
+//   return false;
+// }
 
-int frequency(int arr[], int n, int x) {
-  int count = 0;
-  for (int i = 0; i < n; ++i) {
-    if (arr[i] == x)
-      count++;
-  }
-  return count;
-}
+// int frequency(int arr[], int n, int x) {
+//   int count = 0;
+//   for (int i = 0; i < n; ++i) {
+//     if (arr[i] == x)
+//       count++;
+//   }
+//   return count;
+// }
 
 long sum(int arr[], int n) {
-  long sum = 0;
-  for (int i = 0; i < n; ++i)
-    sum += arr[i];
-  return sum;
+  if (n == 0) return 0;
+  else return arr[0] + sum(arr + 1, n - 1);
 }
 
-int index(char str[], char substr[]) {
-  int i = 0;
-  int j = 0;
-  while (str[i] != '\0') {
-    if (substr[j] == '\0')
-      return i - j;
-    if (str[i] == substr[j])
-      ++j;
-    else
-      j = 0;
-    ++i;
-  }
-  if (substr[j] == '\0')
-    return i - j;
-  return -1;
-}
+// int index(char str[], char substr[]) {
+//   int i = 0;
+//   int j = 0;
+//   while (str[i] != '\0') {
+//     if (substr[j] == '\0')
+//       return i - j;
+//     if (str[i] == substr[j])
+//       ++j;
+//     else
+//       j = 0;
+//     ++i;
+//   }
+//   if (substr[j] == '\0')
+//     return i - j;
+//   return -1;
+// }
 
-bool is_sorted(int arr[], int n) {
-  if (n <= 2)
-    return true;
-  else {
-    int increasing = 1, decreasing = 1;
-    for (int i = 0; i < (n - 1); ++i) {
-      if (arr[i] <= arr[i + 1])
-        ++increasing;
+// bool is_sorted(int arr[], int n) {
+//   if (n <= 2)
+//     return true;
+//   else {
+//     int increasing = 1, decreasing = 1;
+//     for (int i = 0; i < (n - 1); ++i) {
+//       if (arr[i] <= arr[i + 1])
+//         ++increasing;
 
-      if (arr[i] >= arr[i + 1])
-        ++decreasing;
-    }
-    return (increasing == n || decreasing == n);
-  }
-}
+//       if (arr[i] >= arr[i + 1])
+//         ++decreasing;
+//     }
+//     return (increasing == n || decreasing == n);
+//   }
+// }
