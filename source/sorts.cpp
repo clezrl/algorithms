@@ -82,3 +82,15 @@ void mergesort(int* arr, int n) {
     merge(arr, n, n / 2);
   }
 }
+
+int partition(int* arr, int lo, int hi) {
+  return lo;
+}
+
+void quicksort(int* arr, int n) {
+
+}
+
+void quicksort(int* arr, int lo, int hi) {
+  
+}
