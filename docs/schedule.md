@@ -1,7 +1,7 @@
 # Schedule
 
 | Date      | Class # | Lecture                         |
-|-----------|---------|---------------------------------|
+| --------- | ------- | ------------------------------- |
 | Tue, 5/21 | 0       | Getting Started                 |
 | Wed, 5/22 | 1       | C++ Crash Course                |
 | Thu, 5/23 | 2       | C++ Crash Course                |
@@ -14,11 +14,11 @@
 | Tue, 6/11 | 9       | QuickSort                       |
 | Wed, 6/12 | 10      | Sorting & Analysis Review       |
 | Thu, 6/13 | 11      | Exam (Algorithms)               |
-| Tue, 6/18 | 12      | Stacks                          |
-| Wed, 6/19 | 13      | Queues                          |
-| Thu, 6/20 | 14      | SLL, Static / Dynamic Memory    |
-| Tue, 6/25 | 15      | CSLL                            |
-| Wed, 6/26 | 16      | DLL                             |
+| Tue, 6/18 | 12      | SLL                             |
+| Wed, 6/19 | 13      | SLL (cont) / CSLL / DLL         |
+| Thu, 6/20 | 14      | CDLL / Stacks                   |
+| Tue, 6/25 | 15      | Stacks / Queues                 |
+| Wed, 6/26 | 16      | Memory Management               |
 | Thu, 6/27 | 17      | Trees                           |
 | Tue, 7/2  | 18      | Binary Trees                    |
 | Wed, 7/3  | 19      | Binary Trees / Heaps            |

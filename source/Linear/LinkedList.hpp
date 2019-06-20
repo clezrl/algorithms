@@ -8,27 +8,28 @@ class Node {
  private:
   int data;
   Node* next;
+  Node* prev;
 
  public:
-  Node(int d) : data(d) { next = nullptr; }
+  Node(int d) : data(d) { next = prev = nullptr; }
   ~Node() {}
 
-  friend class SLL;
+  friend class LinkedList;
 };
 
-/** Singly Linked List
+/** Doubly Linked List
  * A class that manages nodes to store data
  * non-contiguously in memory.
  */
-class SLL {
+class LinkedList {
  private:
   Node* head;
-  // Node* tail; // Could be helpful!
+  Node* tail;
   unsigned int len;
 
  public:
-  SLL();
-  ~SLL();
+  LinkedList();
+  ~LinkedList();
 
   /** at(int index)
    * Returns the element at the given index.
