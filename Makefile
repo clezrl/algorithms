@@ -14,6 +14,9 @@ string: source/String/string.test.cpp source/String/string.cpp source/Functions/
 %: source/Linear/LinkedList.test.cpp source/Linear/%.cpp
 	$(CXX) $(FLAGS) $^ && ./a.out
 
+Stack: source/Linear/Stack.test.cpp source/Linear/Stack.cpp
+	$(CXX) $(FLAGS) $^ && ./a.out
+
 all: $(TARGETS) 
 
 .PHONY: clean
