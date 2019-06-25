@@ -17,7 +17,7 @@ String: source/String/String.test.cpp source/String/String.cpp source/Functions/
 Stack: source/Linear/Stack.test.cpp source/Linear/Stack.cpp source/Linear/SLL.cpp
 	$(CXX) $(FLAGS) $^ && ./a.out
 
-Queue: source/Linear/Queue.test.cpp source/Linear/Queue.cpp source/Linear/DLL.cpp
+Queue: source/Linear/Queue.test.cpp source/Linear/Queue.cpp source/Linear/SLL.cpp
 	$(CXX) $(FLAGS) $^ && ./a.out
 
 Dequeue: source/Linear/Dequeue.test.cpp source/Linear/Dequeue.cpp source/Linear/DLL.cpp

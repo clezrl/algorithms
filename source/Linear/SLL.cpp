@@ -1,7 +1,7 @@
 #include "LinkedList.hpp"
 
 LinkedList::LinkedList() {
-  head = nullptr;
+  head = tail = nullptr;
   len = 0;
 }
 
@@ -16,7 +16,7 @@ unsigned int LinkedList::length() {
 void LinkedList::push_front(int d) {
   Node* n = new Node(d);
   if (!head) {
-    head = n;
+    head = tail = n;
   } else {
     n->next = head;
     head = n;
@@ -48,13 +48,10 @@ int LinkedList::index(int data) {
 void LinkedList::push_back(int d) {
   Node* n = new Node(d);
   if (!head) {
-    head = n;
+    head = tail = n;
   } else {
-    Node* iter = head;
-    while (iter->next)
-      iter = iter->next;
-
-    iter->next = n;
+    tail->next = n;
+    tail = n;
   }
   ++len;
   return;
@@ -72,6 +69,7 @@ int LinkedList::pop_back() {
     int ret = temp->next->data;
     delete temp->next;
     temp->next = nullptr;
+    tail = temp;
     --len;
     return ret;
   }
@@ -168,6 +166,7 @@ void LinkedList::clear() {
     head = head->next;
     delete to_remove;
   }
+  tail = nullptr;
   len = 0;
 }
 
