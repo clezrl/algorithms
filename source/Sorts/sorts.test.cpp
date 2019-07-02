@@ -4,53 +4,92 @@
 #include "../Functions/functions.hpp"
 #include "sorts.hpp"
 
+#include <chrono>
+#include <iostream>
+#include <vector>
+#include <numeric>
+
 #define CASES 11
 
 /** Sorting Functions */
 typedef void (*sort_fn)(int*, int);
 
 /** Input Types */
-void fill_random(int* arr, int n) {
+namespace fill {
+void random(int* arr, int n, int shift) {
   for (int i = 0; i < n; ++i)
-    arr[i] = rand() % 1000;
+    arr[i] = (rand() % 1000) + shift;
   return;
 }
 
-void fill_ascending(int* arr, int n) {
+void ascending(int* arr, int n, int shift) {
   for (int i = 0; i < n; ++i)
-    arr[i] = i;
+    arr[i] = i + shift;
   return;
 }
 
-void fill_descending(int* arr, int n) {
+void descending(int* arr, int n, int shift) {
   for (int i = 0; i < n; ++i)
-    arr[i] = n - i;
+    arr[i] = n - i + shift;
   return;
 }
 
-void fill_equal(int* arr, int n) {
-  int x = rand() % 1000;
+void equal(int* arr, int n, int shift) {
+  int x = (rand() % 1000) + shift;
   for (int i = 0; i < n; ++i)
     arr[i] = x;
   return;
 }
+}  // namespace fill
 
-typedef void (*fill_fn)(int*, int);
-fill_fn fillers[] = {fill_random, fill_ascending, fill_descending, fill_equal};
+typedef void (*fill_fn)(int*, int, int);
+fill_fn fillers[] = {fill::random, fill::ascending, fill::descending,
+                     fill::equal};
 char filler_names[][20] = {"Random", "Ascending", "Descending", "Equal"};
 
 void test_sort(sort_fn func) {
   for (size_t i = 0; i < sizeof(fillers) / sizeof(fill_fn); ++i) {
     SUBCASE(filler_names[i]) {
-      for (int n = 1; n < CASES; ++n) {
-        int arr[n];
-        fillers[i](arr, n);
-        func(arr, n);
-        REQUIRE(is_sorted(arr, n));
+      for (int shift = -1000; shift <= 1000; shift += 500) {
+        for (int n = 1; n < CASES; ++n) {
+          int arr[n];
+          fillers[i](arr, n, shift);
+
+          int freq[6000] = {};
+          for (int i = 0; i < n; ++i)
+            freq[arr[i] + 2000] += 1;
+
+          func(arr, n);
+          REQUIRE(is_sorted(arr, n));
+
+          for (int i = 0; i < n; ++i)
+            freq[arr[i] + 2000] -= 1;
+          REQUIRE_EQ(sum(freq, 6000), 0);
+        }
       }
     }
   }
 }
+
+// TEST_CASE("Benchmark") { 
+//   int size = 1000000;
+//   int arr[size]; 
+
+//   std::vector<int> vec;
+//   for (int i = 0; i < 20; ++i) {
+//     fill::random(arr, size, 0);
+    
+//     auto start = std::chrono::high_resolution_clock::now();
+//     advancedsort(arr, size);
+//     auto stop = std::chrono::high_resolution_clock::now();
+    
+//     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
+//     vec.push_back(duration);
+//   }
+//   std::cout << "Averaged runtime: ";
+//   std::cout << std::accumulate(vec.begin(), vec.end(), 0.0)/vec.size() << " ms";
+//   std::cout << std::endl;
+// }
 
 TEST_CASE("Bubble Sort") {
   test_sort(bubble_sort);
@@ -150,4 +189,8 @@ TEST_CASE("QuickSort") {
 
 TEST_CASE("Hybrid Sort") {
   test_sort(hybridsort);
+}
+
+TEST_CASE("Tree Sort") {
+  test_sort(treesort);
 }

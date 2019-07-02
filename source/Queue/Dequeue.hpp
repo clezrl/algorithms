@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LinkedList.hpp"
+#include "../LinkedList/LinkedList.hpp"
 
 /** Dequeue Class
  * A Double ended queue class
@@ -8,7 +8,7 @@
  */
 class Dequeue {
  private:
-  LinkedList queue;
+  LinkedList* list;
 
  public:
   Dequeue();
