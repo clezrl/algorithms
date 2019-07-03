@@ -23,8 +23,6 @@ TEST_CASE("push") {
 
   heap.push(1);
   REQUIRE_EQ(heap.peek(), 1);
-
-  REQUIRE_THROWS(heap.push(2));
 }
 
 TEST_CASE("pop") {
