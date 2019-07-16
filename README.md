@@ -48,10 +48,10 @@ Welcome to CSC 212, Data Structures and Algorithms!
 | Tue, 7/2  | [Heaps](docs/notes/trees.html#/3)                                                                  | [OpenDSA 12.17][odsa12]                                                                                                                |
 | Wed, 7/3  | [2-3 Tree / Red Black Tree](https://algs4.cs.princeton.edu/lectures/33BalancedSearchTrees-2x2.pdf) | [OpenDSA 17.5](odsa17), [Balanced Search Trees](https://algs4.cs.princeton.edu/33balanced/)                                            |
 | Fri, 7/5  | [Red Black Tree](https://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf)                         | [LLRB Tree](https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf)                                                                      |
-| Tue, 7/9  | Tries                                                                                              | [OpenDSA 12.19](odsa12), [Wikipedia](https://en.wikipedia.org/wiki/Trie)                                                               |
-| Wed, 7/10 | Data Structures Review                                                                             |                                                                                                                                        |
+| Tue, 7/9  | [Tries](https://algs4.cs.princeton.edu/lectures/52Tries-2x2.pdf)                                   | [OpenDSA 12.19](odsa12), [Wikipedia](https://en.wikipedia.org/wiki/Trie)                                                               |
+| Wed, 7/10 | [Data Structures Review](docs/exams/E02R.md)                                                       |                                                                                                                                        |
 | Thu, 7/11 | Exam (Data Structures)                                                                             |                                                                                                                                        |
-| Tue, 7/16 | Hash Tables                                                                                        |                                                                                                                                        |
+| Tue, 7/16 | [Hash Tables](https://algs4.cs.princeton.edu/lectures/34HashTables-2x2.pdf)                        |                                                                                                                                        |
 | Wed, 7/17 | Graphs                                                                                             |                                                                                                                                        |
 | Thu, 7/18 | Recursive Backtracking                                                                             |                                                                                                                                        |
 | Tue, 7/23 | Dynamic Programming                                                                                |                                                                                                                                        |
@@ -60,33 +60,32 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Assignments (100 points each)
 
-| Title                                                            | Due Date |
-| ---------------------------------------------------------------- | -------- |
-| [A01: Kattis Competition](docs/assignments/A01-kattis.md)        | May 30   |
-| [A02: String Class](docs/assignments/A02-string.md)              | June 6   |
-| [A03: Hybrid Sorting](docs/assignments/A03-hybrid-sort.md)       | June 13  |
-| [A04: Advanced Sorting](docs/assignments/A04-advanced-sort.md)   | June 20  |
-| [A05: Djikstra's Two Stack](docs/assignments/A05-two-stack.md)   | June 27  |
-| [A06: For the love of Binary](docs/assignments/A06-binary.html)  | July 2   |
-| [A07: Heap Sort](docs/assignments/A07-heapsort.html)             | July 11  |
-| [A08: Red/Black Tree Sort](docs/assignments/A08-rbtreesort.html) | July 11  |
-| [A09: Dynamic Array](docs/assignments/A09-dynarray.html)         | July 25  |
-| [A10: Lexographic Sorting]()                                     | July 18  |
-| [A11: Radix Tree]()                                              | July 25  |
-| [A12: Spellchecker]()                                            | July 25  |
-| [A13: Sudoku]()                                                  | Final    |
+| Title                                                               | Due Date |
+| ------------------------------------------------------------------- | -------- |
+| [A01: Kattis Competition](docs/assignments/A01-kattis.md)           | May 30   |
+| [A02: String Class](docs/assignments/A02-string.md)                 | June 6   |
+| [A03: Hybrid Sorting](docs/assignments/A03-hybrid-sort.md)          | June 13  |
+| [A04: Advanced Sorting](docs/assignments/A04-advanced-sort.md)      | June 20  |
+| [A05: Djikstra's Two Stack](docs/assignments/A05-two-stack.md)      | June 27  |
+| [A06: Tree Sort](docs/assignments/A06-binary.html)                  | July 2   |
+| [A07: Heap Sort](docs/assignments/A07-heapsort.html)                | July 11  |
+| [A08: Lexographic Sorting](docs/assignments/A08-lexicographic.html) | July 18  |
+| [A09: Spellchecker]()                                               | July 25  |
+| [A10: Sudoku]()                                                     | Final    |
 
 ## Bonus Points
 
-| Task                      | Points     | Due     |
-| ------------------------- | ---------- | ------- |
-| Code Signal Practice Test | 20         | May 23  |
-| Boot Linux                | 50         | June 6  |
-| Top Kattis                | 50, 30, 20 | May 30  |
-| Fastest Sort              | 50, 30, 20 | June 20 |
-| Array Based Containers    | 50         | June 27 |
-| Heap Implementation       | 25         | July 3  |
-| Additional Advanced Sorts | 50 / Sort  | July 25 |
+| Task                                                                 | Points      | Due     |
+| -------------------------------------------------------------------- | ----------- | ------- |
+| [B00: Code Signal Practice Test](docs/bonus/B00-pretest.html)        | 20          | May 23  |
+| [B01: Boot Linux](docs/bonus/B01-linux.html)                         | 50          | June 6  |
+| [Top Kattis](docs/assignments/A01-kattis.html)                       | 50, 30, 20  | May 30  |
+| [Fastest Sort](docs/assignments/A04-advanced-sort.html)              | 50, 30, 20  | June 20 |
+| [B02: Array Based Containers](docs/bonus/B02-array-based.html)       | 50          | June 27 |
+| [B03: Heap Implementation](docs/bonus/B03-heap.html)                 | 25          | July 3  |
+| [Additional Advanced Sorts](docs/assignments/A04-advanced-sort.html) | 50/25/15/10 | July 25 |
+| [B04: Red/Black Tree Sort](docs/bonus/B04-rbtreesort.html)           | 100         | July 11 |
+| [B05: Dynamic Array](docs/bonus/B05-dynarray.html)                   | 100         | July 25 |
 
 ## Resources
 
