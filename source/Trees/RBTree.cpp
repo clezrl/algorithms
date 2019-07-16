@@ -12,8 +12,7 @@ Node* RBTree::insert(int data, Node* n) {
     else if (data > n->data) 
         n->right = insert(data, n->right);
     
-    n = fix(n);
-    return n;
+    return fix(n);
 
 }
 
@@ -46,21 +45,32 @@ void RBTree::flipColors(Node* node) {
 }
 
 Node* RBTree::fix(Node* temp) {
-    if (!temp->left || !temp->right) return temp;
-    if (temp->right->color && !temp->left->color) temp = rotateLeft(temp);
-    if (temp->left->color && !temp->right->color) temp = rotateRight(temp);
-    if (temp->left->color && temp->right->color) flipColors(temp);
-    preorder();
+  
+    if (temp->right && temp->right->color) temp = rotateLeft(temp);
+    if (temp->left && temp->left->left && temp->left->color && temp->left->left->color) temp = rotateRight(temp);
+    if (temp->left && temp->right && temp->left->color && temp->right->color) flipColors(temp);
+    
     return temp;
 }
 
-// Node* RBTree::moveRedLeft(Node* temp) {
+Node* RBTree::moveRedLeft(Node* temp) {
+  flipColors(temp);
+  if (temp->right->left && temp->right->left->color) {
+    rotateLeft(temp);
+    flipColors(temp);
+  }
+  return temp;
 
-// } 
+} 
 
-// Node* RBTree::moveRedRight(Node* temp) {
-
-// }
+Node* RBTree::moveRedRight(Node* temp) {
+  flipColors(temp);
+  if (temp->left->left && temp->left->left->color) {
+    rotateRight(temp);
+    flipColors(temp);
+  }
+  return temp;
+}
 
 bool RBTree::search(int data, Node* n) {
   if (!n)
@@ -74,7 +84,11 @@ bool RBTree::search(int data, Node* n) {
 }
 
 Node* RBTree::remove(int data, Node* n) {
-  return n;
+  if (n->right->left) { 
+    n->data = n->right->left->data;
+    n = deleteMin(n->right);
+  }
+
 }
 
 inline int max(int a, int b) {
@@ -145,19 +159,38 @@ void RBTree::postorder(std::ostream& oss) {
 }
 
 Node* RBTree::deleteMax(Node* temp) {
-    return temp;
+    if (temp->left && temp->left->color) rotateRight(temp);
+    if (!temp->right) {
+      delete temp;
+      return nullptr;
+    }
+    if (temp->right && !temp->right->color && temp->right->left && !temp->right->left->color)
+      temp = moveRedRight(temp);
+    temp = deleteMax(temp->left);
+    return fix(temp);
 }
 
 void RBTree::deleteMax() {
-
+  root = deleteMax(root);
+  root->color = false;
 }
 
 Node* RBTree::deleteMin(Node* temp) {
-    return temp;
+    if (temp->left == nullptr) {
+      delete temp;
+      return nullptr;
+    }
+
+    if (temp->left && temp->left->color && temp->left->left && temp->left->left->color) 
+      temp = moveRedLeft(temp->left);
+    
+    temp = deleteMin(temp->left);
+    return fix(temp);
 }
 
 void RBTree::deleteMin() {
-
+  root = deleteMin(root);
+  root->color = false;
 }
 
 int RBTree::min(Node* subtree, bool first) {

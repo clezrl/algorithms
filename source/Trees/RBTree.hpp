@@ -37,8 +37,8 @@ class RBTree {
   Node* rotateLeft(Node* node);
   void flipColors(Node* node);
   Node* fix(Node* temp);
-  // Node* moveRedLeft(Node* temp);
-  // Node* moveRedRight(Node* temp);
+  Node* moveRedLeft(Node* temp);
+  Node* moveRedRight(Node* temp);
 
   /** search(int data, Node* n)
    * Recursively searches for data in the subtree rooted at n, returning
