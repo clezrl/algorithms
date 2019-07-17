@@ -21,6 +21,7 @@ class Node {
   ~Node();
 
   friend class List;
+  friend class HashTable;
 };
 
 /** Doubly Linked List
@@ -72,4 +73,6 @@ class List {
    * Prints the contents of the list to the ostream.
    */
   void print(std::ostream& oss = std::cout);
+
+  friend class HashTable;
 };

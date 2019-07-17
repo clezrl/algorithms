@@ -29,6 +29,22 @@ unsigned int HashTable::Size() {
 }
 
 void HashTable::insert(const String& key, int data) {
+    if (table[hash(key)].length() > 8) {
+        List* newTable = new List[size * 2];
+        int oldsize = size;
+        size *= 2;
+        for (int i = 0; i < oldsize; ++i) {
+            Node* iter = table[i].head;
+            while (iter) {
+                int val = iter->val;
+                String* k = iter->key;
+                newTable[hash(*k)].push_back(key, val);
+                iter = iter->next;
+            }
+        }
+        delete[] table;
+        table = newTable;
+    }
     table[hash(key)].push_back(key, data);
 }
 
@@ -53,5 +69,7 @@ bool HashTable::is_empty() {
 }
 
 void HashTable::print() {
-
+    for (int i = 0; i < size; ++i) {
+        table[i].print();
+    }
 }
