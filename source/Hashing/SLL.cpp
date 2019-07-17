@@ -100,7 +100,7 @@ void List::print(std::ostream& oss) {
   Node* temp = head;
   while (temp) {
     oss << temp->val << ", "; 
-    temp->key->print(); 
+    temp->key->print(oss); 
     oss << std::endl;
     temp = temp->next;
   }
