@@ -1,5 +1,5 @@
-CXX=g++-8
-FLAGS=-std=c++11 -Wall -Wextra -fsanitize=address,leak
+CXX=g++
+FLAGS=-std=c++11 -Wall -Wextra -fsanitize=address
 
 SORTS=bubble insertion selection merge quick tree hybrid heap
 LISTS=SLL CSLL DLL CDLL
@@ -53,6 +53,10 @@ lexographic: source/Algorithms/lexographic.test.cpp String.o functions.o Trie.o
 	./a.out
 
 %: source/Algorithms/%.test.cpp functions.o Stack.o Queue.o String.o $(if $(LIST),$(LIST).o,SLL.o)
+	$(CXX) $(FLAGS) $^
+	./a.out
+
+Hashtable: source/Hashing/Hashtable.test.cpp source/Hashing/Hashtable.cpp source/Hashing/SLL.cpp String.o functions.o
 	$(CXX) $(FLAGS) $^
 	./a.out
 
