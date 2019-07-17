@@ -68,8 +68,8 @@ bool HashTable::is_empty() {
     return true;
 }
 
-void HashTable::print() {
+void HashTable::print(std::ostream& oss) {
     for (int i = 0; i < size; ++i) {
-        table[i].print();
+        table[i].print(oss);
     }
 }

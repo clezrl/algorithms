@@ -96,12 +96,12 @@ int List::at(int ind) {
 }
 
 void List::print(std::ostream& oss) {
-  std::cout << "Length " << len << std::endl;
+  oss << "Length " << len << std::endl;
   Node* temp = head;
   while (temp) {
     oss << temp->val << ", "; 
     temp->key->print(); 
-    std::cout << std::endl;
+    oss << std::endl;
     temp = temp->next;
   }
   oss << std::endl;
