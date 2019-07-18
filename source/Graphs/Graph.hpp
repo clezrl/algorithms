@@ -1,5 +1,17 @@
 #pragma once
 #include <vector>
+#include <utility>
+
+class Node {
+  private:
+    int data;
+    std::vector<int> edges;
+  public:
+    Node(int d, std::vector<int> vec) : data(d), edges(vec) {};
+    ~Node() {edges.clear();};
+
+    friend class Graph;
+};
 
 /** Graph
  * A class which represents a general (di)graph with weighted edges and node
@@ -9,6 +21,8 @@
  */
 class Graph {
  private:
+  std::vector<Node> vertices;
+
  public:
   /** Constructor
    * Creates a graph with n vertices but no edges.
