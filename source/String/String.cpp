@@ -197,7 +197,7 @@ bool String::compare(char* str) const {
 }
 
 // O(n)
-bool String::compare(String& str) const {
+bool String::compare(const String& str) const {
   return this->compare(str.array);
 }
 
@@ -207,7 +207,7 @@ void String::concatenate(char* str) {
   unsigned int strlen = 0, length = size();
   while (str[strlen])
     ++strlen;
-  // Reserve the space/
+  // Reserve the space
   if (length + strlen > this->_capacity) {
     this->reserve(strlen);
   }

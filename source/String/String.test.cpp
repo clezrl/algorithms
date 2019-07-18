@@ -1,6 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../doctest.h"
-
 #include "String.hpp"
 
 TEST_CASE("Append") {
@@ -114,6 +113,7 @@ TEST_CASE("Erase") {
   CHECK_EQ(s.at(3), 'i');
   s.erase('T');
   CHECK_EQ(s.at(0), 'e');
+  CHECK_EQ(s.at(14), '.');
   CHECK_EQ(s.at(13), '3');
   CHECK_THROWS(s.at(16));
 }

@@ -3,12 +3,16 @@
 
 /** Graph
  * A class which represents a general (di)graph with weighted edges and node
- * values. Uses an adjacency matrix to store edge connections/weights.
- * All methods that take one or more node indices will throw an error if any of
- * the nodes are out of bounds.
+ * values. All methods that take one or more node indices will throw an error if
+ * any of the nodes are out of bounds.
  */
 class Graph {
  private:
+  int** matrix;
+  int* node_values;
+  unsigned int num_nodes;
+  unsigned int num_edges;
+
  public:
   /** Constructor
    * Creates a graph with n vertices but no edges.
