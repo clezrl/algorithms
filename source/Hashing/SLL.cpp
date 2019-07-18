@@ -29,8 +29,6 @@ unsigned int List::length() {
   return len;
 }
 
-
-
 int List::index(String& d) {
   int i = 0;
   for (Node* iter = head; iter; iter = iter->next, ++i) {
