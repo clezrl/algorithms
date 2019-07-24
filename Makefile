@@ -1,5 +1,5 @@
 CXX=g++-8
-FLAGS=-std=c++11 -Wall -Wextra -fsanitize=address,leak
+FLAGS=-std=c++11 -Wall -Wextra
 
 files = $(basename $(notdir $(filter-out $(wildcard source/**/*.test.cpp), $(wildcard source/$(1)/*.cpp))))
 SORTS=$(call files,Sorts)
@@ -28,7 +28,7 @@ twostack.test: twostack.test.o Stack.o SLL.o String.o functions.o
 lexicographic.test: lexicographic.test.o Trie.o String.o functions.o
 hamiltoniancycle.test: Graph.o
 karprabin.test: String.o functions.o
-djikstra.test: Graph.o
+djikstra.test: Graph.o String.o Queue.o DLL.o functions.o
 a-star.test: String.o functions.o
 
 # Complex Depedencies
